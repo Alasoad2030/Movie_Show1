@@ -39,7 +39,11 @@ dependencies:
   carousel_slider: ^4.2.1
   get: ^4.6.6
   google_fonts: ^6.1.0
-
+  sizer: ^2.0.15
+  provider: ^6.1.2
+  audioplayers:
+  video_player:
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -65,6 +69,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/
+    - assets/video/hindi.mp4
    
 
   # An image asset can refer to one or more resolution-specific "variants", see
