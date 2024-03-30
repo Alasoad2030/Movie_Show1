@@ -2,19 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class PlayTheMovieProvider extends ChangeNotifier {
+  bool isPlaying = true;
   late VideoPlayerController videoPlayerController;
-  Future? intializeMovieFuture;
+  // ignore: unused_field
+  late Future<void> intializeMovieFuture;
 
-  initializeTheMovie() {
+  initializeTheMovie() async {
     videoPlayerController =
-        VideoPlayerController.asset('asstes/video/hindi.mp4');
-    intializeMovieFuture = videoPlayerController.initialize().then(
-          (value) => notifyListeners(),
-        );
+        VideoPlayerController.asset('assets/video/hindi.mp4');
+    intializeMovieFuture = videoPlayerController.initialize();
+    // videoPlayerController.play();
+    notifyListeners();
   }
 
-  playMovie() {
-    videoPlayerController.play();
+  palyTheMovie() {
+    if (videoPlayerController.value.isPlaying) {
+      videoPlayerController.pause();
+      isPlaying = true;
+    } else {
+      videoPlayerController.play();
+      isPlaying = false;
+    }
     notifyListeners();
   }
 }

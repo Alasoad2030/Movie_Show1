@@ -1,10 +1,9 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_show/presentation/screens/loading_user_profile/component/loading_user_profile_model.dart';
 import 'package:movie_show/presentation/screens/who_is_watching/provider/who_is_watching_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../../loading_user_profile/loading_user_profile.dart';
 
 @override
 Widget buildCustomeUser(
@@ -15,12 +14,9 @@ Widget buildCustomeUser(
     onTap: () {
       AudioPlayer player = AudioPlayer();
       player.play(AssetSource('1.mp3'));
-      Get.off(
-        () => LoadingUserProfile(
-          userImage: imageProfile,
-          userName: userName,
-        ),
-      );
+      Get.offNamed('loadingUserProfile',
+          arguments: LoadingUserProfileModel(
+              userName: userName, userImage: imageProfile));
     },
     child: Column(
       //mainAxisSize: MainAxisSize.min,

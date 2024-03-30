@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TitleWidget extends StatelessWidget {
   final String text;
@@ -11,7 +10,7 @@ class TitleWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         text,
-        style: GoogleFonts.anton(fontSize: 15),
+        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       ),
     );
   }

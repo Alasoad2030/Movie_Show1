@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import '../../data/apis/api_endpoints.dart';
 import '../../data/response_modle/home_models/home_movies_model.dart';
-import '../screens/details_screen/details_screen.dart';
 
 SizedBox showMovieWidgetInAlist(
     BuildContext context, List<HomeMoviesModel> listOfMovies) {
@@ -18,9 +17,10 @@ SizedBox showMovieWidgetInAlist(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              Get.to(() => DetailsScreen(
-                    homeMoviesModel: listOfMovies[index],
-                  ));
+              Get.toNamed(
+                'detailsScreen',
+                arguments: listOfMovies[index],
+              );
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),

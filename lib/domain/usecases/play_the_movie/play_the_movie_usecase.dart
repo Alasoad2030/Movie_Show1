@@ -5,5 +5,5 @@ import 'package:movie_show/presentation/screens/play_the_movie/provider/play_the
 import 'package:provider/provider.dart';
 
 playTheMovieUseCase(BuildContext context) {
-  Provider.of<PlayTheMovieProvider>(context, listen: false).playMovie();
+  Provider.of<PlayTheMovieProvider>(context, listen: false).palyTheMovie();
 }

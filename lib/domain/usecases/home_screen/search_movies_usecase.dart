@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_show/data/response_modle/home_models/home_movies_model.dart';
 import 'package:movie_show/presentation/screens/home/provider/home_provider.dart';
-import 'package:movie_show/presentation/screens/play_the_movie/play_the_movie.dart';
+
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -155,9 +155,10 @@ Widget showAllMoviesList(HomeMoviesModel homeMoviesModel) {
           size: 40,
         ),
         onPressed: () {
-          Get.to(PlayTheMovie(
-            homeMoviesModel: homeMoviesModel,
-          ));
+          Get.toNamed(
+            'playTheMovie',
+            arguments: homeMoviesModel,
+          );
         },
       ),
     ],

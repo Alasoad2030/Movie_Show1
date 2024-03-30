@@ -4,16 +4,16 @@ import 'package:movie_show/presentation/screens/home/provider/home_provider.dart
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../data/apis/api_endpoints.dart';
-import '../../details_screen/details_screen.dart';
 
 GestureDetector logoOfTheMovieInTheStack(
     {required BuildContext context, required int index}) {
   return GestureDetector(
     onTap: () {
-      Get.to(() => DetailsScreen(
-            homeMoviesModel: Provider.of<HomeProvider>(context)
-                .finalTrendingMoviesDataList[index],
-          ));
+      Get.toNamed(
+        'detailsScreen',
+        arguments: Provider.of<HomeProvider>(context, listen: false)
+            .finalTrendingMoviesDataList[index],
+      );
     },
     child: Padding(
       padding: EdgeInsets.symmetric(horizontal: 5.w),

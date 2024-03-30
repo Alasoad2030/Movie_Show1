@@ -25,12 +25,15 @@ class _PlayTheMovieState extends State<PlayTheMovie> {
       Provider.of<PlayTheMovieProvider>(context, listen: false)
           .initializeTheMovie();
     });
+
     super.initState();
   }
 
   @override
   void dispose() {
-    Provider.of<PlayTheMovieProvider>(context).videoPlayerController.dispose();
+    Provider.of<PlayTheMovieProvider>(context, listen: false)
+        .videoPlayerController
+        .dispose();
     super.dispose();
   }
 
@@ -54,8 +57,15 @@ class _PlayTheMovieState extends State<PlayTheMovie> {
                         .videoPlayerController
                         .value
                         .isInitialized
-                    ? VideoPlayer(Provider.of<PlayTheMovieProvider>(context)
-                        .videoPlayerController)
+                    ? AspectRatio(
+                        aspectRatio: Provider.of<PlayTheMovieProvider>(context)
+                            .videoPlayerController
+                            .value
+                            .aspectRatio,
+                        child: VideoPlayer(
+                            Provider.of<PlayTheMovieProvider>(context)
+                                .videoPlayerController),
+                      )
                     : const Center(
                         child: Text('there is an error in the video'),
                       )),
@@ -110,8 +120,18 @@ class _PlayTheMovieState extends State<PlayTheMovie> {
                 ],
               ),
               customeButton(
-                  text: 'Play',
-                  icon: Icons.play_arrow,
+                  text:
+                      Provider.of<PlayTheMovieProvider>(context, listen: false)
+                                  .isPlaying ==
+                              true
+                          ? 'play'
+                          : 'Pause',
+                  icon:
+                      Provider.of<PlayTheMovieProvider>(context, listen: false)
+                                  .isPlaying ==
+                              true
+                          ? Icons.play_arrow
+                          : Icons.pause,
                   backColor: Colors.white,
                   textAndIconColor: Colors.black,
                   function: () {
